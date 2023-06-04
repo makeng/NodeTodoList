@@ -1,37 +1,53 @@
 <template>
 	<div class="todo-list">
-		<van-radio-group v-model="checked">
-			<van-cell-group inset>
-				<van-cell title="Radio 1" clickable @click="checked = '1'">
-					<template #right-icon>
-						<van-radio name="1" />
-					</template>
-				</van-cell>
-				<van-cell title="Radio 2" clickable @click="checked = '2'">
-					<template #right-icon>
-						<van-radio name="2" />
-					</template>
-				</van-cell>
-			</van-cell-group>
-		</van-radio-group>
+		<div class="todo"
+		     v-for="({title,checked},index) in state.list"
+		     @click="clickTodo(index)"
+		>
+			<van-checkbox
+				:key="title "
+				:checked="checked"
+			>
+				{{ title }}
+			</van-checkbox>
+		</div>
 	</div>
 </template>
 
-<script>
-export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String,
-  },
+<script setup>
+import { reactive } from 'vue'
+
+const state = reactive({
+  list: [
+    { title: 'first', checked: true },
+    { title: 'second', checked: false },
+  ],
+})
+/**
+ * 点击更改
+ * @param index
+ */
+function clickTodo(index) {
+  const target = state.list[index]
+  state.list[index] = Object.assign(target, { checked: !target.checked })
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.todo-list{
+.todo-list {
   padding: 10px;
   background: #eee;
+  flex: 1;
+}
+.todo {
+  background: #fff;
+  padding: 10px;
   border-radius: 8px;
-  flex:1;
+  margin-bottom: 4px;
+  &:active {
+    background: #eee;
+    transition: background-color 200ms;
+  }
 }
 </style>

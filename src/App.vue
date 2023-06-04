@@ -1,7 +1,7 @@
 <template>
 	<h3>
-		<img class="icon" alt="Vue logo" src="./assets/logo.png">
-		Todo List
+		<img class="logo" alt="Vue logo" src="./assets/logo.png">
+		Node Todo List
 	</h3>
 	<TodoList />
 </template>
@@ -19,7 +19,6 @@ export default {
 
 <style>
 #app {
-  padding: 20px 10px;
   height: 100vh;
   font-family: sans-serif;
   display: flex;
@@ -31,10 +30,12 @@ export default {
   padding: 0;
 }
 h3 {
-  margin-bottom: 10px;
+  margin: 20px 0;
+  padding: 0 20px;
 }
-.icon {
+.logo {
   display: inline-block;
+  margin-right: 10px;
   width: 30px;
   vertical-align: middle;
 }

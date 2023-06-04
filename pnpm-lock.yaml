@@ -4,6 +4,9 @@ dependencies:
   core-js:
     specifier: ^3.8.3
     version: 3.8.3
+  lodash:
+    specifier: ^4.17.21
+    version: 4.17.21
   nodemon:
     specifier: ^2.0.22
     version: 2.0.22
@@ -26,7 +29,7 @@ devDependencies:
     version: 7.12.16(@babel/core@7.12.16)(eslint@8.42.0)
   '@vue/cli-service':
     specifier: ~5.0.0
-    version: 5.0.1(@babel/core@7.12.16)(vue@3.3.4)
+    version: 5.0.1(@babel/core@7.12.16)(lodash@4.17.21)(vue@3.3.4)
 
 packages:
 
@@ -627,7 +630,7 @@ packages:
     peerDependencies:
       '@vue/cli-service': ^3.0.0 || ^4.0.0 || ^5.0.0-0
     dependencies:
-      '@vue/cli-service': 5.0.1(@babel/core@7.12.16)(vue@3.3.4)
+      '@vue/cli-service': 5.0.1(@babel/core@7.12.16)(lodash@4.17.21)(vue@3.3.4)
       '@vue/cli-shared-utils': 5.0.8
     transitivePeerDependencies:
       - encoding
@@ -638,10 +641,10 @@ packages:
     peerDependencies:
       '@vue/cli-service': ^3.0.0 || ^4.0.0 || ^5.0.0-0
     dependencies:
-      '@vue/cli-service': 5.0.1(@babel/core@7.12.16)(vue@3.3.4)
+      '@vue/cli-service': 5.0.1(@babel/core@7.12.16)(lodash@4.17.21)(vue@3.3.4)
     dev: true
 
-  /@vue/cli-service@5.0.1(@babel/core@7.12.16)(vue@3.3.4):
+  /@vue/cli-service@5.0.1(@babel/core@7.12.16)(lodash@4.17.21)(vue@3.3.4):
     resolution: {integrity: sha512-lhTW1d8waZv1VaRSvhE5pWWfkdmAgRTRSluDfyxkehZHMAWi//rd7a9zppN3k9Zr4X3oYVii+u7wR/RcTlr9cQ==}
     engines: {node: ^12.0.0 || >= 14.0.0}
     hasBin: true
@@ -680,8 +683,8 @@ packages:
       '@vue/cli-plugin-router': 5.0.8(@vue/cli-service@5.0.1)
       '@vue/cli-plugin-vuex': 5.0.8(@vue/cli-service@5.0.1)
       '@vue/cli-shared-utils': 5.0.8
-      '@vue/component-compiler-utils': 3.3.0
-      '@vue/vue-loader-v15': /vue-loader@15.10.1(css-loader@6.8.1)(webpack@5.85.0)
+      '@vue/component-compiler-utils': 3.3.0(lodash@4.17.21)
+      '@vue/vue-loader-v15': /vue-loader@15.10.1(css-loader@6.8.1)(lodash@4.17.21)(webpack@5.85.0)
       '@vue/web-component-wrapper': 1.3.0
       acorn: 8.8.2
       acorn-walk: 8.2.0
@@ -850,10 +853,10 @@ packages:
       '@vue/compiler-dom': 3.3.4
       '@vue/shared': 3.3.4
 
-  /@vue/component-compiler-utils@3.3.0:
+  /@vue/component-compiler-utils@3.3.0(lodash@4.17.21):
     resolution: {integrity: sha512-97sfH2mYNU+2PzGrmK2haqffDpVASuib9/w2/noxiFi31Z54hW+q3izKQXXQZSNhtiUpAI36uSuYepeBe4wpHQ==}
     dependencies:
-      consolidate: 0.15.1
+      consolidate: 0.15.1(lodash@4.17.21)
       hash-sum: 1.0.2
       lru-cache: 4.1.5
       merge-source-map: 1.1.0
@@ -1594,7 +1597,7 @@ packages:
     engines: {node: '>=0.8'}
     dev: true
 
-  /consolidate@0.15.1:
+  /consolidate@0.15.1(lodash@4.17.21):
     resolution: {integrity: sha512-DW46nrsMJgy9kqAbPt5rKaCr7uFtpo4mSUvLHIUbJEjm0vo+aY5QLwBUq3FK4tRnJr/X0Psc0C4jf/h+HtXSMw==}
     engines: {node: '>= 0.10.0'}
     peerDependencies:
@@ -1760,6 +1763,7 @@ packages:
         optional: true
     dependencies:
       bluebird: 3.7.2
+      lodash: 4.17.21
     dev: true
 
   /content-disposition@0.5.4:
@@ -3229,7 +3233,6 @@ packages:
 
   /lodash@4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
-    dev: true
 
   /log-symbols@4.1.0:
     resolution: {integrity: sha512-8XPvpAA8uyhfteu8pIvQxpJZ7SYYdpUivZpGy6sFsBuKRY/7rQGavedeB8aK+Zkyq6upMFVL/9AW6vOYzfRyLg==}
@@ -5038,7 +5041,7 @@ packages:
     resolution: {integrity: sha512-BXq3jwIagosjgNVae6tkHzzIk6a8MHFtzAdwhnV5VlvPTFxDCvIttgSiHWjdGoTJvXtmRu5HacExfdarRcFhog==}
     dev: true
 
-  /vue-loader@15.10.1(css-loader@6.8.1)(webpack@5.85.0):
+  /vue-loader@15.10.1(css-loader@6.8.1)(lodash@4.17.21)(webpack@5.85.0):
     resolution: {integrity: sha512-SaPHK1A01VrNthlix6h1hq4uJu7S/z0kdLUb6klubo738NeQoLbS6V9/d8Pv19tU0XdQKju3D1HSKuI8wJ5wMA==}
     peerDependencies:
       '@vue/compiler-sfc': ^3.0.8
@@ -5054,7 +5057,7 @@ packages:
       vue-template-compiler:
         optional: true
     dependencies:
-      '@vue/component-compiler-utils': 3.3.0
+      '@vue/component-compiler-utils': 3.3.0(lodash@4.17.21)
       css-loader: 6.8.1(webpack@5.85.0)
       hash-sum: 1.0.2
       loader-utils: 1.4.2
