@@ -2,7 +2,8 @@
   "version": "0.1.0",
   "scripts": {
     "dev:server": "nodemon app.ts",
-    "dev:pages": "vue-cli-service serve"
+    "dev:pages": "vue-cli-service serve",
+    "build:pages": "vue-cli-service build"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
