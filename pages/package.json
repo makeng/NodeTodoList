@@ -1,9 +1,8 @@
 {
   "version": "0.1.0",
   "scripts": {
-    "dev:server": "nodemon app.ts",
-    "dev:pages": "vue-cli-service serve",
-    "build:pages": "vue-cli-service build"
+    "dev": "vue-cli-service serve",
+    "build": "vue-cli-service build"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
@@ -13,8 +12,6 @@
   "dependencies": {
     "core-js": "^3.8.3",
     "lodash": "^4.17.21",
-    "nodemon": "^2.0.22",
-    "ts-node": "^10.9.1",
     "vant": "^4.4.1",
     "vue": "^3.3.4"
   }

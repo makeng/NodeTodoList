@@ -1,13 +1,13 @@
 <template>
-	<div class="todo-list">
-		<Item
-			v-for="({title,checked},index) in list"
-			:title="title"
-			:checked="checked"
-			@click="toggle(index)"
-		/>
-	</div>
-	<van-button icon="plus" type="primary">Button</van-button>
+  <div class="todo-list">
+    <Item
+        v-for="({title,checked},index) in list"
+        :title="title"
+        :checked="checked"
+        @click="toggle(index)"
+    />
+  </div>
+  <van-button icon="plus" type="primary" @click="clickAdd">New Todo</van-button>
 </template>
 
 <script setup>
@@ -26,6 +26,10 @@ const list = reactive([
 function toggle(index) {
   const target = list[index]
   target.checked = !target.checked
+}
+
+function clickAdd() {
+  list.push({ title: 'new', checked: false })
 }
 </script>
 
