@@ -7,17 +7,41 @@
         @click="toggle(index)"
     />
   </div>
-  <van-button icon="plus" type="primary" @click="clickAdd">New Todo</van-button>
+  <van-dialog
+      show-cancel-button
+      :show="showDialog"
+      title="New todo"
+      @cancel="showDialog = true"
+      @confirm="confirmAdd"
+  >
+    <input v-model="todoTitle" />
+  </van-dialog>
+  <van-button
+      icon="plus" type="primary"
+      @click="showDialog = true"
+  >
+    New Todo
+  </van-button>
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { onMounted, reactive, ref } from 'vue'
 import Item from '@/components/TodoList/Item.vue'
+import { fetchAllTodoList, saveTodo } from '@/utils/api'
 
-const list = reactive([
-  { title: 'first', checked: true },
-  { title: 'second', checked: false },
-])
+const showDialog = ref(false)
+const todoTitle = ref('')
+const list = reactive([])
+
+function initList() {
+  fetchAllTodoList().then(res => {
+    list.splice(0, list.length, ...res)
+  })
+}
+
+onMounted(function () {
+  initList()
+})
 
 /**
  * 点击更改
@@ -28,8 +52,10 @@ function toggle(index) {
   target.checked = !target.checked
 }
 
-function clickAdd() {
-  list.push({ title: 'new', checked: false })
+function confirmAdd() {
+  saveTodo({ title: todoTitle.value }).then(initList)
+  todoTitle.value = ''
+  showDialog.value = false
 }
 </script>
 

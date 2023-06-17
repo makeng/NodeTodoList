@@ -13,7 +13,7 @@ const CONFIG = {
  */
 function createCollection() {
   const uri = CONFIG.LOCAL_DB
-  const client = new MongoClient(uri, { useNewUrlParser: true })
+  const client = new MongoClient(uri)
   client.connect()
   return client.db(CONFIG.DB).collection(CONFIG.COLLECTION)
 }

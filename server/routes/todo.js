@@ -4,21 +4,16 @@ const Todo = require('../models/data-todo')
 
 const todo = new Todo()
 
-/* GET users listing. */
-router.get('/', function (req, res, next) {
-  todo.add('New one')
-  todo.findAll((err, docs) => {
-    if (err) {
-      console.error(err)
-      return
-    }
-    console.log('查找', docs)
-    const todoListStr = JSON.stringify(docs, null, 2)
-    console.log(todoListStr)
-    res.render('index', { documents: docs })
-  })
 
-  res.send('查找')
+router.get('/save', function (req, res, next) {
+  const { title } = req.query
+  todo.add(title)
+  res.send(true)
+})
+
+router.get('/all', async function (req, res, next) {
+  const fond = await todo.findAll()
+  res.send(fond)
 })
 
 module.exports = router

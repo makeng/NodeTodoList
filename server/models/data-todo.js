@@ -9,7 +9,6 @@ class Todo {
    */
   add(title) {
     const newItem = { title, checked: false }
-    console.log('添加一个')
     return dbCollection.insertOne(newItem)
   }
 
@@ -18,9 +17,8 @@ class Todo {
    * @param cb
    * @return {*}
    */
-  findAll(cb) {
-    console.log('查找全部')
-    return dbCollection.find({}, { projection: { name: 'New one' } }).toArray(cb)
+  findAll() {
+    return dbCollection.find().toArray()
   }
 }
 
