@@ -1,12 +1,16 @@
 <template>
-	<div class="todo"
-	>
-		<van-checkbox
-			:checked="checked"
-		>
-			{{ title }}
-		</van-checkbox>
-	</div>
+  <div class="todo">
+    <van-checkbox
+      :checked="checked"
+      @click="emit('clickCheckbox')"
+    >
+      {{ title }}
+    </van-checkbox>
+    <van-button
+      icon="delete" color="red" size="mini"
+      @click="emit('clickDelete')"
+    />
+  </div>
 </template>
 
 <script setup>
@@ -17,6 +21,8 @@ defineProps({
   checked: Boolean,
 })
 
+const emit = defineEmits(['clickCheckbox', 'clickDelete'])
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -26,6 +32,9 @@ defineProps({
   padding: 10px;
   border-radius: 8px;
   margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+
   &:active {
     background: #eee;
     transition: background-color 200ms;

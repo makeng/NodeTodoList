@@ -14,8 +14,11 @@ function dataParser(res) {
 
 request.interceptors.response.use(dataParser)
 
-export const fetchAllTodoList = () => request.get('/todo/all')
+export const fetchTodoList = () =>
+  request.get('/todo')
 export const saveTodo = (item) =>
-  request.get('/todo/save', { params: item })
-
-
+  request.post('/todo', { params: item })
+export const deleteTodo = (id) =>
+  request.delete('/todo', { params: { id } })
+export const updateTodo = (item) =>
+  request.put('/todo', { params: item })

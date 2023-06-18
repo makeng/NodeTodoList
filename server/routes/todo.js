@@ -5,15 +5,29 @@ const Todo = require('../models/data-todo')
 const todo = new Todo()
 
 
-router.get('/save', function (req, res, next) {
-  const { title } = req.query
-  todo.add(title)
+router.post('/', function (req, res, next) {
+  const { title } = req.body.params
+
+  todo.create(title)
   res.send(true)
 })
 
-router.get('/all', async function (req, res, next) {
-  const fond = await todo.findAll()
+router.put('/', function (req, res, next) {
+  const { params } = req.body
+
+  todo.update(params)
+    .then(() => res.send(true))
+})
+
+router.get('/', async function (req, res, next) {
+  const fond = await todo.read()
   res.send(fond)
+})
+
+router.delete('/', function (req, res, next) {
+  const { id } = req.query
+  todo.delete(id)
+    .then(() => res.send(true))
 })
 
 module.exports = router

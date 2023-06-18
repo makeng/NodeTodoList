@@ -1,24 +1,27 @@
 const { dbCollection } = require('./config')
+const { ObjectId } = require('mongodb')
 
 
 class Todo {
-  /**
-   * 增加一条
-   * @param title
-   * @return {*}
-   */
-  add(title) {
+  create(title) {
     const newItem = { title, checked: false }
     return dbCollection.insertOne(newItem)
   }
 
-  /**
-   * 查询所有用户文档
-   * @param cb
-   * @return {*}
-   */
-  findAll() {
+  read() {
     return dbCollection.find().toArray()
+  }
+
+  delete(id) {
+    const params = { _id: new ObjectId(id) }
+    return dbCollection.deleteOne(params)
+  }
+
+  update(target) {
+    const { _id, ...modified } = target
+    const params = { _id: new ObjectId(_id) }
+    const doc = { $set: modified }
+    return dbCollection.updateOne(params, doc)
   }
 }
 

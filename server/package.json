@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node --experimental-modules ./bin/www"
+    "serve": "brew services start mongodb-community",
+    "start": "node --experimental-modules ./bin/www",
+    "stop": "brew services stop mongodb-community"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
