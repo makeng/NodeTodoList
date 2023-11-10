@@ -19,9 +19,9 @@ class Todo {
 
   update(target) {
     const { _id, ...modified } = target
-    const params = { _id: new ObjectId(_id) }
+    const filter = { _id: new ObjectId(_id) }
     const doc = { $set: modified }
-    return dbCollection.updateOne(params, doc)
+    return dbCollection.updateOne(filter, doc)
   }
 }
 
